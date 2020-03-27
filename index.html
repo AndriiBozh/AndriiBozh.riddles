@@ -1,7 +1,79 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Mystery+Quest&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="riddle.css" />
+
+    <script src="riddle.js"></script>
+
+    <title>Riddles</title>
+  </head>
+  <body>
+    <div class="main">
+      <header class="header">
+        <input
+          type="button"
+          class="switchLanguage"
+          id="switchLangButtonId"
+          value="Укр"
+          ontouchstart=""
+          onclick="changeLang(), changeValueLangButton(), changeWelcomePhrase(), changeRiddleButtonText(), changeHintButtonLanguage(), changeAnswerButtonLang(),clearInput(), hideCongrats(), hideTryAgain(), removeListItems(), disableHintButton(), disableAnswerButton(), hideHint(), removeLastStepRemark()"
+        />
+        <div class="headerTitle">
+          <span class="mainHeader">riddles</span>
+        </div>
+      </header>
+      <div class="questionContainer"><div id="question">Let's play!</div></div>
+      <div id="answer"><ul class="" id="listOfLetters"></ul></div>
+      <form
+        id="submitForm"
+        onsubmit="getInput(event), clearInput(), hideHint(), disableInputField()"
+        onkeypress="removeLastStepRemark(), removeCheers()"
+      >
+        <input type="text" name="userInput" id="userInput" />
+      </form>
+      <div class="controlButtons">
+        <input
+          type="button"
+          class=""
+          id="newRiddle"
+          value="New Riddle"
+          onclick="getRiddle(), showInputField(), enterLetter(), clearInput(), removeListItems(), hideCongrats(), hideTryAgain(), enableHintButton(), enableAnswerButton(), hideHint(), removeLastStepRemark(), enableInputField()"
+        />
+
+        <input
+          type="button"
+          id="hintButton"
+          value="get a hint"
+          disabled
+          onclick="getHint(), hideTryAgain(), removeLastStepRemark()"
+        />
+
+        <input
+          type="button"
+          id="showAnswer"
+          value="answer"
+          disabled
+          onclick="showAnswer()"
+        />
+      </div>
+
+      <div class="hint" id="hintContainer"></div>
+      <div class="result" id="tryAgain"></div>
+      <div class="result" id="congrats"></div>
+      <div class="" id="lastStepRemark"></div>
+
+      <footer class="footer">
+        <span class="footerContent"
+          ><span class="copyRight">&copy</span>AB 2020</span
+        >
+      </footer>
+    </div>
+  </body>
 </html>

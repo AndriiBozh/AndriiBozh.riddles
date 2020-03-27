@@ -1,0 +1,589 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* colors */
+:root {
+  /* change language button */
+  --cherry: #8c2f39;
+  --silver: #c1bcac;
+  --light-dim: #e8f7ee;
+  --golden-grey: #f6f7eb;
+  --dimmed-cherry: #99676d;
+
+  /* header title */
+  --violet-blue: #231651;
+  --light-cyan: #d6fff6;
+  --greenish-white: #eafdf8;
+
+  /* question container */
+  --greenish-yellow: rgba(226, 241, 175, 1);
+  --lighty-greenish-white: rgba(229, 255, 222, 0.97);
+  --pastel-yellow: #f5ff90;
+
+  /* input field */
+  --straw: #d8d174;
+
+  /* question */
+  --greenish-brown: #2f2504;
+
+  /* letter container */
+  --dark-cream: #7a6263;
+  --brown-coffee: #1c0f13;
+  --cream: #f2dcb2;
+  --greenish-cream: #f0ffce;
+
+  /* last step remark */
+  --white: #fff;
+  --orange: #dd6e42;
+
+  /* try again */
+  --lighter-brown: #96705b;
+  --browhish-rose: #efbc9b;
+  --whitish-rose: #ffeddf;
+
+  /* hints */
+  --pastel-brown: #dcbf85;
+  --darker-grey: #424b54;
+  --greyish-yellow: #e1ce7a;
+  --red: #ff220c;
+
+  /* congrats */
+  --dark-grey: #595758;
+  --pale-rose: #ffc6d9;
+  --yellowish-cream: #fbffb9;
+
+  /* buttons */
+  --whitish-green: #2a6e43;
+  --smokey-green: #79bb90;
+  --soft-yellow: #e9b44c;
+  --dust-yellow: #cda963;
+  --deep-red: #b80c09;
+  --wine: #793635;
+
+  /* footer */
+  --alabaster: #e0f2e9;
+  --pale-brown: #b89685;
+  --pale-violet: #d1b1c8;
+}
+
+body {
+  background-image: url("https://source.unsplash.com/BVyNlchWqzs");
+  background-size: cover;
+  font-family: "Mystery Quest", cursive, sans-serif;
+  letter-spacing: 3px;
+}
+
+.main {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 20px auto 20px;
+  grid-template-rows: 20vh 15vh 15vh 12vh 15vh 16vh 7vh;
+}
+
+.header {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  text-transform: uppercase;
+  display: grid;
+  letter-spacing: 9px;
+}
+
+.headerTitle::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--violet-blue);
+  filter: blur(7px);
+  box-shadow: 1px 5px 8px 6px var(--light-cyan);
+  opacity: 0.7;
+}
+
+.headerTitle {
+  font-size: 40px;
+  color: var(--greenish-white);
+  align-self: center;
+  justify-self: center;
+  position: relative;
+}
+
+.switchLanguage {
+  font-family: "Mystery Quest", cursive;
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  width: 40px;
+  height: 27px;
+  align-self: center;
+  background-color: var(--cherry);
+  border: 1px solid var(--silver);
+  border-radius: 3px;
+  color: var(--light-dim);
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 1px 1px 10px 2px var(--golden-grey);
+}
+
+input.switchLanguage:hover {
+  background-color: var(--dimmed-cherry);
+}
+
+input.switchLanguage:active {
+  transform: translateY(2px);
+}
+
+.questionContainer {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: var(--lighty-greenish-white);
+  box-shadow: 1px 2px 9px 4px var(--greenish-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid var(--pastel-yellow);
+}
+
+#question {
+  padding: 0 5px;
+  font-weight: bold;
+  color: var(--greenish-brown);
+  text-align: center;
+}
+
+#question span {
+  opacity: 1;
+  transition: opacity 1s;
+  animation-name: showQuestion;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  font-size: 20px;
+}
+
+@keyframes showQuestion {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#answer {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#listOfLetters {
+  display: flex;
+  list-style: none;
+  margin-top: 17px;
+}
+
+#answer li {
+  padding: 11px;
+  background-color: var(--dark-cream);
+  border: 2px solid var(--brown-coffee);
+  border-radius: 2px;
+  color: var(--greenish-cream);
+  font-size: 22px;
+  margin: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 2px 2px 18px 5px var(--cream);
+}
+
+.animate {
+  opacity: 1;
+  transition: opacity 1s;
+  animation-name: showTryLetter;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes showTryLetter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+form input {
+  width: 74%;
+  height: 40px;
+  background-color: var(--greenish-white);
+  padding: 0.5em;
+  border: 1px solid var(--straw);
+  border-radius: 3px;
+  color: var(--greenish-brown);
+  font-weight: bold;
+  font-family: "Mystery Quest", cursive, sans-serif;
+  letter-spacing: 5px;
+  font-size: 16px;
+  box-shadow: 1px 1px 9px 4px var(--greenish-yellow);
+}
+
+#submitForm {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  opacity: 0;
+}
+
+.showSubmitForm {
+  opacity: 1;
+  animation-name: showSubmitForm;
+  animation-duration: 4s;
+}
+
+@keyframes showSubmitForm {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.controlButtons {
+  grid-column: 2 / 3;
+  grid-row: 6 / 7;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 60% auto;
+  align-self: self-end;
+  margin: 0 10%;
+}
+
+#newRiddle,
+#hintButton,
+#showAnswer {
+  margin: 4px;
+  font-family: "Mystery Quest", cursive;
+  border-radius: 3px;
+  border: 1px solid #c1bcac;
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: #ffeedb;
+  box-shadow: 2px 1px 7px 1px #ffeedb;
+}
+
+input[type="button"][disabled] {
+  opacity: 0.5;
+}
+
+#newRiddle {
+  background-color: var(--whitish-green);
+  grid-column: 1 / 3;
+  padding: 10px;
+}
+
+#hintButton {
+  background-color: var(--soft-yellow);
+  padding: 6px;
+}
+
+#showAnswer {
+  background-color: var(--deep-red);
+  padding: 6px;
+}
+
+#newRiddle:active,
+#hintButton:active,
+#showAnswer:active {
+  transform: translateY(2px);
+}
+
+#newRiddle:active {
+  background-color: var(--smokey-green);
+}
+
+#hintButton:active {
+  background-color: var(--dust-yellow);
+}
+
+#showAnswer:active {
+  background-color: var(--wine);
+}
+
+input {
+  cursor: pointer;
+}
+
+#hintContainer {
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+  color: var(--darker-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#hintContainer .myHint::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--pastel-brown);
+  filter: blur(8px);
+  box-shadow: 8px 0px 16px 9px var(--greyish-yellow);
+}
+
+#hintContainer .myHint {
+  font-size: 19px;
+  color: var(--darker-grey);
+  position: relative;
+}
+
+#hintNumber {
+  color: var(--red);
+  font-size: 34px;
+}
+
+#hintLetter {
+  color: var(--red);
+  font-size: 37px;
+}
+
+#hintNumber,
+#hintLetter {
+  opacity: 1;
+  animation-name: showHint;
+  animation-duration: 4s;
+}
+
+@keyframes showHint {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#lastStepRemark {
+  font-size: 22px;
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+
+  /* centering horizontally and vertically */
+  margin: 5%;
+  display: inline-block;
+  text-align: center;
+  /* end of centering */
+}
+
+#lastStepRemark span {
+  color: var(--white);
+  position: relative;
+}
+
+#lastStepRemark span::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--orange);
+  filter: blur(8px);
+  box-shadow: 8px 0px 16px 9px var(--orange);
+}
+
+.result {
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+}
+
+.result .again {
+  font-size: 60px;
+  color: var(--whitish-rose);
+  position: relative;
+}
+
+.result .again::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--lighter-brown);
+  filter: blur(8px);
+  box-shadow: 8px 0px 16px 9px var(--browhish-rose);
+}
+
+.result .congratulation {
+  font-size: 58px;
+  color: var(--yellowish-cream);
+  position: relative;
+}
+
+.result .congratulation::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 8px;
+  left: 0px;
+  bottom: 8px;
+  right: -15px;
+  background-color: var(--dark-grey);
+  filter: blur(8px);
+  box-shadow: 8px 0px 16px 9px var(--pale-rose);
+}
+
+/* =====================   lastStepRemark transitions  ====================== */
+
+.hint span,
+.result span,
+#lastStepRemark span {
+  opacity: 1;
+  transition: opacity 1.5s;
+  animation-name: showYourself;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes showYourself {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* =====================  end of lastStepRemark animations  ===================== */
+
+.footer {
+  grid-column: 2 / 3;
+  grid-row: 7 / 8;
+  align-self: self-end;
+  justify-self: center;
+  padding-bottom: 5px;
+  font-size: 11px;
+  color: var(--alabaster);
+}
+.footer .footerContent {
+  position: relative;
+}
+.footer .footerContent::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: var(--pale-violet);
+  filter: blur(7px);
+  box-shadow: 2px 2px 5px 4px var(--pale-brown);
+}
+.footer .copyRight {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/* ================ media queries =================== */
+
+@media screen and (max-height: 668px) {
+  #question span {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .main {
+    grid-template-rows: 16vh 16vh 22vh 8vh 15vh 16vh 7vh;
+  }
+
+  .switchLanguage {
+    top: 24px;
+    right: 52px;
+    width: 41px;
+    height: 30px;
+    letter-spacing: 2px;
+  }
+
+  #question {
+    font-size: 30px;
+  }
+
+  .questionContainer {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  #question span {
+    font-size: 35px;
+    letter-spacing: 4px;
+  }
+
+  #answer li {
+    padding: 17px;
+    font-size: 40px;
+    margin: 6px;
+  }
+
+  form input {
+    width: 50%;
+  }
+
+  #hintContainer .myHint {
+    font-size: 33px;
+  }
+
+  #hintLetter {
+    font-size: 58px;
+  }
+
+  #hintNumber {
+    font-size: 48px;
+  }
+
+  #lastStepRemark {
+    font-size: 33px;
+    margin: 56px 5%;
+  }
+
+  .result .congratulation {
+    font-size: 84px;
+  }
+
+  .controlButtons {
+    margin: 0 25%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .main {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
